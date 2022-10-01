@@ -4,6 +4,14 @@ const seedUsers = async () => {
   await UserModel.deleteMany()
   await UserModel.create(
     {
+      avatar: 'AD',
+      email: 'administrador@gmail.com',
+      firstName: 'Administrador',
+      isAdmin: true,
+      lastName: 'Administrador',
+      password: 'administrador'
+    },
+    {
       avatar: 'AH',
       email: 'hernandez@gmail.com',
       firstName: 'Armando',

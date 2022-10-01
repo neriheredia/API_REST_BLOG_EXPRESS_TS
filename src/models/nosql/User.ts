@@ -11,7 +11,7 @@ const UserSchema = new Schema({
     required: true,
     unique: true
   },
-  firsName: {
+  firstName: {
     type: String,
     required: true
   },
@@ -32,7 +32,8 @@ const UserSchema = new Schema({
   profilePic: {
     type: String
   }
-})
+}, { timestamps: true }
+)
 
 const UserModel = model('User', UserSchema)
 

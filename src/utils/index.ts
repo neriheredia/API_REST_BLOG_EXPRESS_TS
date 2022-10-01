@@ -1,3 +1,4 @@
+export * from './createAvatar'
 export * from './errorHandle'
 export * from './index'
 export * from './isNumber'

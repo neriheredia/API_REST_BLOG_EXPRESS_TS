@@ -26,13 +26,22 @@ const swaggerDefinition: OAS3Definition = {
       }
     },
     schemas: {
-      user: {
+      login: {
+        type: 'object',
+        required: ['email', 'password'],
+        properties: {
+          email: {
+            type: 'string'
+          },
+          password: {
+            type: 'string'
+          }
+        }
+      },
+      register: {
         type: 'object',
         required: ['email', 'firstName', 'lastName', 'password'],
         properties: {
-          avatar: {
-            type: 'string'
-          },
           email: {
             type: 'string'
           },
@@ -43,9 +52,6 @@ const swaggerDefinition: OAS3Definition = {
             type: 'string'
           },
           password: {
-            type: 'string'
-          },
-          profilePic: {
             type: 'string'
           }
         }

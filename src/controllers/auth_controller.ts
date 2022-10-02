@@ -48,7 +48,7 @@ const loginUser = async (req: Request, res: Response) => {
 
       return descryptedPassword !== passwordReq
         ? handleHttpError(res, 500, 'Invalid credentials')
-        : handleHttpRes(res, 201, 'User created', userData);
+        : handleHttpRes(res, 200, 'User logged in successfully', userData);
     }
 
     handleHttpError(res, 500, 'There is no registered user with that email.');

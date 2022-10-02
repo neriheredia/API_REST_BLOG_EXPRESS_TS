@@ -9,14 +9,14 @@ const router = Router();
  * /api/v1/auth/register:
  *  post:
  *    tags:
- *      - auth
+ *      - Autentificación
  *    summary: "Register user"
  *    description: Registar un nuevo usuarió, para utilizar la web
  *    requestBody:
  *      content:
  *        application/json:
  *          schema:
- *            $ref: "#/components/schemas/user"
+ *            $ref: "#/components/schemas/register"
  *    responses:
  *      '201':
  *        description: Retorna el usuario insertado en la colección.
@@ -29,6 +29,29 @@ const router = Router();
  */
 
 router.post('/register', registerUser);
+
+/**
+ * Login user
+ * @openapi
+ * /api/v1/auth/login:
+ *  post:
+ *    tags:
+ *      - Autentificación
+ *    summary: "Login user"
+ *    description: Inicio de sesion de un usuario
+ *    requestBody:
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: "#/components/schemas/login"
+ *    responses:
+ *      '200':
+ *        description: Retorna el usuario con su accessToken.
+ *    parameters:
+ *      - in: path
+ *        email: "test@gmail.com"
+ *        password: "123456789"
+ */
 
 router.post('/login', loginUser);
 

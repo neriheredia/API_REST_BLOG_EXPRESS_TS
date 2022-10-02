@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+import { model, Schema } from 'mongoose';
 
 const UserSchema = new Schema({
   avatar: {
@@ -11,7 +11,7 @@ const UserSchema = new Schema({
     required: true,
     unique: true
   },
-  firsName: {
+  firstName: {
     type: String,
     required: true
   },
@@ -27,13 +27,14 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     minLength: 8,
-    maxLength: 20
+    maxLength: 100
   },
   profilePic: {
     type: String
   }
-})
+}, { timestamps: true }
+);
 
-const UserModel = model('User', UserSchema)
+const UserModel = model('User', UserSchema);
 
-export default UserModel
+export default UserModel;

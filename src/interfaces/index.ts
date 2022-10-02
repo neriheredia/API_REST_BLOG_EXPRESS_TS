@@ -1,2 +1,2 @@
-export * from './index'
-export * from './user_interface'
+export * from './index';
+export * from './user_interface';

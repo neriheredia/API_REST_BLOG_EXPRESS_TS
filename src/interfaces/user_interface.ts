@@ -1,4 +1,6 @@
-export interface UserAuth {
+import { Types } from 'mongoose'
+
+export interface UserProp {
   avatar?: string
   email: string
   firstName: string
@@ -6,4 +8,8 @@ export interface UserAuth {
   lastName: string
   password: string
   profilePic?: string
+}
+
+export interface AuthUser extends UserProp {
+  _id: Types.ObjectId
 }

@@ -30,6 +30,9 @@ const swaggerDefinition: OAS3Definition = {
         type: 'object',
         required: ['email', 'firstName', 'lastName', 'password'],
         properties: {
+          avatar: {
+            type: 'string'
+          },
           email: {
             type: 'string'
           },
@@ -40,6 +43,9 @@ const swaggerDefinition: OAS3Definition = {
             type: 'string'
           },
           password: {
+            type: 'string'
+          },
+          profilePic: {
             type: 'string'
           }
         }

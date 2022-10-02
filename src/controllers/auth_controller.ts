@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { registerNewUser } from '../services'
-import { createAvatarDefault, encryptPassword, handleHttpRes, handleHttpError } from '../utils'
+import { loginService, registerService } from '../services'
+import { createAvatarDefault, decryptPassword, encryptPassword, handleHttpRes, handleHttpError } from '../utils'
 
 const registerUser = async (req: Request, res: Response) => {
   const avatarDefault = createAvatarDefault(req.body.firstName, req.body.lastName)
@@ -12,7 +12,7 @@ const registerUser = async (req: Request, res: Response) => {
     password: encryptPassword(req.body.password)
   }
   try {
-    const newUser = await registerNewUser(userData)
+    const newUser = registerService(userData)
     const savedUser = await newUser.save()
     handleHttpRes(res, 201, 'User created', savedUser)
   } catch (error) {
@@ -20,4 +20,19 @@ const registerUser = async (req: Request, res: Response) => {
   }
 }
 
-export { registerUser }
+const loginUser = async (req: Request, res: Response) => {
+  const query = req.body.email
+  const password = req.body.password
+  try {
+    const user = await loginService(query)
+    if (user) {
+      const descryptedPassword = decryptPassword(user!.password)
+      return descryptedPassword !== password ? handleHttpError(res, 500, 'Invalid credentials') : handleHttpRes(res, 201, 'User created', user)
+    }
+    handleHttpError(res, 500, 'There is no registered user with that email.')
+  } catch (error) {
+    handleHttpError(res, 500, 'There is no registered user with that email.', error)
+  }
+}
+
+export { loginUser, registerUser }

@@ -1,6 +1,8 @@
 import UserModel from '../models/nosql/User'
 import { UserAuth } from '../interfaces'
 
-const registerNewUser = async (user:UserAuth) => await new UserModel(user)
+const registerService = (user:UserAuth) => new UserModel(user)
 
-export { registerNewUser }
+const loginService = async (email: string) => await UserModel.findOne({ email })
+
+export { loginService, registerService }

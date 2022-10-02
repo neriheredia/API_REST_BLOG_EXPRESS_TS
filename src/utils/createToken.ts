@@ -1,8 +1,8 @@
-import { sign } from 'jsonwebtoken'
-import { AuthUser } from '../interfaces/user_interface'
+import { sign } from 'jsonwebtoken';
+import { AuthUser } from '../interfaces/user_interface';
 
 export const crateToken = (user:AuthUser) => {
-  const secretKey = <string>process.env.JWT_SECRET_KEY
+  const secretKey = <string>process.env.JWT_SECRET_KEY;
   const accessToken = sign(
     {
       id: user._id,
@@ -12,6 +12,6 @@ export const crateToken = (user:AuthUser) => {
       isAdmin: user.isAdmin
     }, secretKey,
     { expiresIn: '7h' }
-  )
-  return accessToken
-}
+  );
+  return accessToken;
+};

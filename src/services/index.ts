@@ -1,2 +1,2 @@
-export * from './auth_services'
-export * from './index'
+export * from './auth_services';
+export * from './index';

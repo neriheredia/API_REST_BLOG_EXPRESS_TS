@@ -1,7 +1,7 @@
-import { Router } from 'express'
-import { loginUser, registerUser } from '../../controllers'
+import { Router } from 'express';
+import { loginUser, registerUser } from '../../controllers';
 
-const router = Router()
+const router = Router();
 
 /**
  * Register new user
@@ -28,8 +28,8 @@ const router = Router()
  *        password: "123456789"
  */
 
-router.post('/register', registerUser)
+router.post('/register', registerUser);
 
-router.post('/login', loginUser)
+router.post('/login', loginUser);
 
-export { router }
+export { router };

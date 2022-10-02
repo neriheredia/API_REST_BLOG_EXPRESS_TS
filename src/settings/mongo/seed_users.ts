@@ -1,8 +1,8 @@
-import { encryptPassword } from '../../utils'
-import UserModel from '../../models/nosql/User'
+import { encryptPassword } from '../../utils';
+import UserModel from '../../models/nosql/User';
 
 const seedUsers = async () => {
-  await UserModel.deleteMany()
+  await UserModel.deleteMany();
   await UserModel.create(
     {
       avatar: 'AD',
@@ -54,7 +54,7 @@ const seedUsers = async () => {
       lastName: 'Carmona',
       password: encryptPassword('123456789')
     }
-  )
-}
+  );
+};
 
-export { seedUsers }
+export { seedUsers };

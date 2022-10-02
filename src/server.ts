@@ -1,6 +1,5 @@
 import { app } from './app';
-import nosqlConnect from './settings/mongo/mongodbConnect';
-import { seedUsers } from './settings/mongo/seed_users';
+import { mongodbConnect, seedUsers, seedCategories } from './settings/mongo';
 import { swaggerDocs } from './settings/swagger/swagger_config';
 
 const port = <string>process.env.PORT;
@@ -12,6 +11,9 @@ app.listen(port, () => {
   swaggerDocs(app, port, 'v1');
 });
 
-if (engine === 'nosql') nosqlConnect();
+if (engine === 'nosql') mongodbConnect();
 
-if (seed === 'true') seedUsers();
+if (seed === 'true') {
+  seedUsers();
+  seedCategories();
+}

@@ -1,4 +1,5 @@
 export * from './createAvatar'
+export * from './encryptHash'
 export * from './errorHandle'
 export * from './index'
 export * from './isNumber'

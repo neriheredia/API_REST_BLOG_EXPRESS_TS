@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
 import { readdirSync } from 'fs';
 import { removeExtension } from '../../utils';
 
@@ -15,6 +15,10 @@ readdirSync(PATH_ROUTER).filter((fileName) => {
       router.use(`/${cleanName}`, moduleRouter.router);
     });
   }
+});
+
+router.get('*', (_req: Request, res: Response) => {
+  res.status(404).json({ message: 'NOT_FOUND' });
 });
 
 export { router };

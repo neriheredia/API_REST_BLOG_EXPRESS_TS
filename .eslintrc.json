@@ -11,5 +11,5 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint"],
-  "rules": { "semi": "off" }
+  "rules": { "semi": "off", "indent": ["error", 2] }
 }

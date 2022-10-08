@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { newPostService } from '../services';
+import { allPostsService, deleteAllPostService, deletePostService, newPostService, updatePostService } from '../services';
 import { handleHttpError, handleHttpRes } from '../utils';
 
 const createPost = async (req: Request, res: Response) => {
@@ -22,4 +22,47 @@ const createPost = async (req: Request, res: Response) => {
   };
 };
 
-export { createPost };
+const allPosts = async (req: Request, res: Response) => {
+  try {
+    const posts = await allPostsService();
+
+    handleHttpRes(res, 200, 'Successful call', posts);
+  } catch (error) {
+    handleHttpError(res, 500, 'Error, the call failed.');
+  };
+};
+
+const updatePost = async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  try {
+    const newPost = await updatePostService(id, req.body)
+
+    handleHttpRes(res, 200, 'Successful call', newPost);
+  } catch (error) {
+    handleHttpError(res, 500, 'Error, the call failed.');
+  };
+};
+
+const deletePost = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  try {
+    const deletedPost = await deletePostService(id);
+
+    handleHttpRes(res, 200, 'Successful call', deletedPost);
+  } catch (error) {
+    handleHttpError(res, 500, 'Error, the call failed.');
+  }
+};
+
+const deleteAllPosts = async (req: Request, res: Response) => {
+  try {
+    const response = await deleteAllPostService();
+
+    handleHttpRes(res, 200, 'Deleted database posts', response);
+  } catch (error) {
+    handleHttpError(res, 500, 'Error, the call failed.');
+  }
+}
+
+export { allPosts, createPost, deleteAllPosts, deletePost, updatePost };

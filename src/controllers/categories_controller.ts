@@ -14,7 +14,7 @@ const creteCategory = async (req: Request, res: Response) => {
 
     handleHttpRes(res, 201, 'Category created', savedCategory);
   } catch (error) {
-    handleHttpError(res, 500, 'Error, the category wwas not created.');
+    handleHttpError(res, 500, 'Error, the category was not created.');
   };
 };
 

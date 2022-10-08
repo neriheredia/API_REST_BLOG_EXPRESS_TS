@@ -1,3 +1,3 @@
 export * from './category_interface';
-export * from './index';
+export * from './post_interface';
 export * from './user_interface';

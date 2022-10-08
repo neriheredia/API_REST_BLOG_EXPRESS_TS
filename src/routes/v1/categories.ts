@@ -3,14 +3,14 @@ import { allCategories, creteCategory, deleteCategory, deleteAllCategories, upda
 
 const router = Router();
 
-router.post('/', creteCategory);
-
 router.get('/', allCategories);
+
+router.get('/admin', deleteAllCategories);
+
+router.post('/', creteCategory);
 
 router.put('/:id', updateCategory);
 
 router.delete('/:id', deleteCategory);
-
-router.get('/admin', deleteAllCategories);
 
 export { router };

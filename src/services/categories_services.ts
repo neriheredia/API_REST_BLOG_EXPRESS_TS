@@ -3,7 +3,15 @@ import { CategoryProps } from '../interfaces';
 
 export const newCategoryService = (category:CategoryProps) => new CategoryModel(category);
 
-export const allCategoriesService = async () => await CategoryModel.find({});
+export const allCategoriesService = async () => {
+  try {
+    const categories = await CategoryModel.find({});
+
+    return categories;
+  } catch (error) {
+    return error;
+  }
+}
 
 export const updateCategoryService = async (id:string, name: string) => {
   try {
@@ -19,10 +27,26 @@ export const updateCategoryService = async (id:string, name: string) => {
 
     return category;
   } catch (error) {
-    throw new Error('Failed call database.');
+    return error;
   }
 };
 
-export const deleteCategoryService = async (id:string) => await CategoryModel.findByIdAndDelete(id);
+export const deleteCategoryService = async (id:string) => {
+  try {
+    const category = await CategoryModel.findByIdAndDelete(id);
 
-export const deleteAllCategoryService = async () => await CategoryModel.deleteMany();
+    return category;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const deleteAllCategoryService = async () => {
+  try {
+    const categories = await CategoryModel.deleteMany();
+
+    return categories;
+  } catch (error) {
+    return error;
+  }
+};

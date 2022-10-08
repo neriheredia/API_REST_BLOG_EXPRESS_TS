@@ -17,8 +17,4 @@ readdirSync(PATH_ROUTER).filter((fileName) => {
   }
 });
 
-router.get('*', (_req: Request, res: Response) => {
-  res.status(404).json({ message: 'NOT_FOUND' });
-});
-
 export { router };

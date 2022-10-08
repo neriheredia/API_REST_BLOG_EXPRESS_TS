@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "./server.ts",
+  "type": "commonjs",
   "scripts": {
     "build": "tsc",
     "dev": "pnpm run build && nodemon",
+    "start": "tsc && node build/server.js",
     "test": "jest --coverage --silent",
     "test:watch": "jest --watch",
     "lint": "eslint . --ext .ts",

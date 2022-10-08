@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  db:
+    image: mongo:3.6.22-xenial
+    container_name: mongo
+    ports:
+      - 27017:27017
+  blogserver:
+    image: node
+    container_name: projectblog
+    ports:
+      - 4000:3000
+    build: .
+    command: npm start

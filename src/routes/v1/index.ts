@@ -1,4 +1,4 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
 import { readdirSync } from 'fs';
 import { removeExtension } from '../../utils';
 
@@ -14,7 +14,7 @@ readdirSync(PATH_ROUTER).filter((fileName) => {
     import(`./${cleanName}`).then((moduleRouter) => {
       router.use(`/${cleanName}`, moduleRouter.router);
     });
-  }
+  };
 });
 
 export { router };

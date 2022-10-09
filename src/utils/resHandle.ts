@@ -4,4 +4,8 @@ const handleHttpRes = (res: Response, numberStatus: number, message: string, dat
   res.status(numberStatus).json({ status: numberStatus, message, data });
 };
 
-export { handleHttpRes };
+const handleHttpResAuth = (res: Response, numberStatus: number, message: string, data?:any, token?:any) => {
+  res.header('authorization', `Bearer ${token}`).json({ status: numberStatus, message, data });
+};
+
+export { handleHttpRes, handleHttpResAuth };

@@ -10,8 +10,8 @@ export const allCategoriesService = async () => {
     return categories;
   } catch (error) {
     return error;
-  }
-}
+  };
+};
 
 export const updateCategoryService = async (id:string, name: string) => {
   try {
@@ -28,7 +28,7 @@ export const updateCategoryService = async (id:string, name: string) => {
     return category;
   } catch (error) {
     return error;
-  }
+  };
 };
 
 export const deleteCategoryService = async (id:string) => {
@@ -38,7 +38,7 @@ export const deleteCategoryService = async (id:string) => {
     return category;
   } catch (error) {
     return error;
-  }
+  };
 };
 
 export const deleteAllCategoryService = async () => {
@@ -48,5 +48,5 @@ export const deleteAllCategoryService = async () => {
     return categories;
   } catch (error) {
     return error;
-  }
+  };
 };

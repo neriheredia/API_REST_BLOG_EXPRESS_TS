@@ -3,6 +3,6 @@ export * from './createAvatar';
 export * from './createToken';
 export * from './encryptHash';
 export * from './errorHandle';
-export * from './index';
+export * from './formatterToken';
 export * from './removeExtension';
 export * from './resHandle';

@@ -1,7 +1,7 @@
 import CategoryModel from '../../models/nosql/Category';
 
 const seedCategories = async () => {
-  await CategoryModel.deleteMany()
+  await CategoryModel.deleteMany();
   await CategoryModel.create(
     {
       name: 'noticias'

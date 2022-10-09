@@ -1,16 +1,17 @@
 import { Router } from 'express';
+import { tokenValidation } from '../../middleware';
 import { allCategories, creteCategory, deleteCategory, deleteAllCategories, updateCategory } from '../../controllers';
 
 const router = Router();
 
-router.get('/', allCategories);
+router.get('/', tokenValidation, allCategories);
 
-router.get('/admin', deleteAllCategories);
+router.get('/admin', tokenValidation, deleteAllCategories);
 
-router.post('/', creteCategory);
+router.post('/', tokenValidation, creteCategory);
 
-router.put('/:id', updateCategory);
+router.put('/:id', tokenValidation, updateCategory);
 
-router.delete('/:id', deleteCategory);
+router.delete('/:id', tokenValidation, deleteCategory);
 
 export { router };

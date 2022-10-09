@@ -7,7 +7,7 @@ export const allUserService = async () => {
     return users;
   } catch (error) {
     return error;
-  }
+  };
 };
 
 export const updateUserService = async (id:string, body: Request) => {
@@ -23,7 +23,7 @@ export const updateUserService = async (id:string, body: Request) => {
     return user;
   } catch (error) {
     return error;
-  }
+  };
 };
 
 export const deleteUserService = async (id:string) => {
@@ -33,7 +33,7 @@ export const deleteUserService = async (id:string) => {
     return user;
   } catch (error) {
     return error;
-  }
+  };
 };
 
 export const deleteAllUserService = async () => {
@@ -43,5 +43,5 @@ export const deleteAllUserService = async () => {
     return users;
   } catch (error) {
     return error;
-  }
+  };
 };

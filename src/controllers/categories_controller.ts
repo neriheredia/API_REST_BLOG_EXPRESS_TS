@@ -10,7 +10,7 @@ const creteCategory = async (req: Request, res: Response) => {
   try {
     const newCategory = newCategoryService(categoryData);
 
-    const savedCategory = await newCategory.save()
+    const savedCategory = await newCategory.save();
 
     handleHttpRes(res, 201, 'Category created', savedCategory);
   } catch (error) {
@@ -33,7 +33,7 @@ const updateCategory = async (req: Request, res: Response) => {
   const name = req.body.name;
 
   try {
-    const newCategory = await updateCategoryService(id, name)
+    const newCategory = await updateCategoryService(id, name);
 
     handleHttpRes(res, 200, 'Successful call', newCategory);
   } catch (error) {
@@ -49,8 +49,8 @@ const deleteCategory = async (req: Request, res: Response) => {
     handleHttpRes(res, 200, 'Successful call', deletedCategory);
   } catch (error) {
     handleHttpError(res, 500, 'Error, the call failed.');
-  }
-}
+  };
+};
 
 const deleteAllCategories = async (req: Request, res: Response) => {
   try {
@@ -59,7 +59,7 @@ const deleteAllCategories = async (req: Request, res: Response) => {
     handleHttpRes(res, 200, 'Deleted database categories', response);
   } catch (error) {
     handleHttpError(res, 500, 'Error, the call failed.');
-  }
-}
+  };
+};
 
 export { allCategories, creteCategory, deleteCategory, deleteAllCategories, updateCategory };

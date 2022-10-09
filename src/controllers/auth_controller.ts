@@ -7,7 +7,8 @@ import {
   encryptPassword,
   handleHttpRes,
   handleHttpError,
-  userAdapter
+  userAdapter,
+  handleHttpResAuth
 } from '../utils';
 
 const registerUser = async (req: Request, res: Response) => {
@@ -29,8 +30,8 @@ const registerUser = async (req: Request, res: Response) => {
     handleHttpRes(res, 201, 'User created', savedUser);
   } catch (error) {
     handleHttpError(res, 500, 'Error creating user', error);
-  }
-}
+  };
+};
 
 const loginUser = async (req: Request, res: Response) => {
   const query = req.body.email;
@@ -44,17 +45,15 @@ const loginUser = async (req: Request, res: Response) => {
 
       const descryptedPassword = decryptPassword(user.password);
 
-      const userData = userAdapter(user, accessToken);
+      const userData = userAdapter(user);
 
       return descryptedPassword !== passwordReq
         ? handleHttpError(res, 500, 'Invalid credentials')
-        : handleHttpRes(res, 200, 'User logged in successfully', userData);
-    }
-
-    handleHttpError(res, 500, 'There is no registered user with that email.');
+        : handleHttpResAuth(res, 200, 'User logged in successfully', userData, accessToken);
+    };
   } catch (error) {
     handleHttpError(res, 500, 'There is no registered user with that email.', error);
-  }
-}
+  };
+};
 
-export { loginUser, registerUser }
+export { loginUser, registerUser };

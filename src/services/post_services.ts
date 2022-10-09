@@ -11,7 +11,7 @@ export const allPostsService = async () => {
     return posts;
   } catch (error) {
     return error;
-  }
+  };
 };
 
 export const updatePostService = async (id:string, body: Request) => {
@@ -27,7 +27,7 @@ export const updatePostService = async (id:string, body: Request) => {
     return post;
   } catch (error) {
     return error;
-  }
+  };
 };
 
 export const deletePostService = async (id:string) => {
@@ -37,7 +37,7 @@ export const deletePostService = async (id:string) => {
     return post;
   } catch (error) {
     return error;
-  }
+  };
 };
 
 export const deleteAllPostService = async () => {
@@ -47,5 +47,5 @@ export const deleteAllPostService = async () => {
     return posts;
   } catch (error) {
     return error;
-  }
+  };
 };

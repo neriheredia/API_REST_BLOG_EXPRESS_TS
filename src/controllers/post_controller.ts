@@ -9,7 +9,7 @@ const createPost = async (req: Request, res: Response) => {
     photo: req.body.photo,
     title: req.body.title,
     user: req.body.user
-  }
+  };
 
   try {
     const newPost = newPostService(postData);
@@ -18,7 +18,7 @@ const createPost = async (req: Request, res: Response) => {
 
     handleHttpRes(res, 201, 'Post created', savedPost);
   } catch (error) {
-    handleHttpError(res, 500, 'Error, the post was not created.')
+    handleHttpError(res, 500, 'Error, the post was not created.');
   };
 };
 
@@ -36,7 +36,7 @@ const updatePost = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   try {
-    const newPost = await updatePostService(id, req.body)
+    const newPost = await updatePostService(id, req.body);
 
     handleHttpRes(res, 200, 'Successful call', newPost);
   } catch (error) {
@@ -52,7 +52,7 @@ const deletePost = async (req: Request, res: Response) => {
     handleHttpRes(res, 200, 'Successful call', deletedPost);
   } catch (error) {
     handleHttpError(res, 500, 'Error, the call failed.');
-  }
+  };
 };
 
 const deleteAllPosts = async (req: Request, res: Response) => {
@@ -62,7 +62,7 @@ const deleteAllPosts = async (req: Request, res: Response) => {
     handleHttpRes(res, 200, 'Deleted database posts', response);
   } catch (error) {
     handleHttpError(res, 500, 'Error, the call failed.');
-  }
-}
+  };
+};
 
 export { allPosts, createPost, deleteAllPosts, deletePost, updatePost };

@@ -24,7 +24,7 @@ const createPost = async (req: Request, res: Response) => {
 
 const allPosts = async (req: Request, res: Response) => {
   try {
-    const posts = await allPostsService();
+    const posts = await allPostsService(req);
 
     handleHttpRes(res, 200, 'Successful call', posts);
   } catch (error) {

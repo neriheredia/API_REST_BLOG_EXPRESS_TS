@@ -4,11 +4,16 @@ import { Request } from 'express';
 
 export const newPostService = (post: PostProps) => new PostModel(post);
 
-export const allPostsService = async () => {
+export const allPostsService = async (req: Request) => {
+  const cat = req.query.cat;
   try {
-    const posts = await PostModel.find({}).populate('user');
+    if (cat) {
+      const categoryPosts = await PostModel.find({ category: cat }).populate('user');
+      return categoryPosts;
+    }
+    const allPost = await PostModel.find({}).populate('user');
 
-    return posts;
+    return allPost;
   } catch (error) {
     return error;
   };

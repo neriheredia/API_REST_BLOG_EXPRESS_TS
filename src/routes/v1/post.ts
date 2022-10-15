@@ -4,7 +4,7 @@ import { allPosts, createPost, deleteAllPosts, deletePost, updatePost } from '..
 
 const router = Router();
 
-router.get('/', tokenValidation, allPosts);
+router.get('/', allPosts);
 
 router.get('/admin', tokenValidation, deleteAllPosts);
 

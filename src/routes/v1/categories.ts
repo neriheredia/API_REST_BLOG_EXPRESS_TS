@@ -4,7 +4,7 @@ import { allCategories, creteCategory, deleteCategory, deleteAllCategories, upda
 
 const router = Router();
 
-router.get('/', tokenValidation, allCategories);
+router.get('/', allCategories);
 
 router.get('/admin', tokenValidation, deleteAllCategories);
 

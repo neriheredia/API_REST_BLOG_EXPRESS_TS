@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import { tokenValidation } from '../../middleware';
 import { allCategories, creteCategory, deleteCategory, deleteAllCategories, updateCategory } from '../../controllers';
+import { cacheInit } from '../../settings/cache/expeditiousConfig';
 
 const router = Router();
 
-router.get('/', allCategories);
+router.get('/', cacheInit, allCategories);
 
 router.get('/admin', tokenValidation, deleteAllCategories);
 

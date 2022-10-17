@@ -2,6 +2,8 @@
 declare namespace Express {
   export interface Request {
     userId: string | undefined;
-    cat: string;
+    cat: string | undefined;
+    limit: string | undefined;
+    page: string | undefined;
   }
 }

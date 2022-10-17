@@ -1,17 +1,26 @@
 import PostModel from '../models/nosql/Post';
 import { PostProps } from '../interfaces';
 import { Request } from 'express';
+import { formattedCategory, stringToNumber } from '../utils';
 
 export const newPostService = (post: PostProps) => new PostModel(post);
 
 export const allPostsService = async (req: Request) => {
-  const cat = req.query.cat;
+  const { cat, limit, page } = req.query;
+
+  const limitFormatted = limit ? stringToNumber(limit) : 4;
+  const pageFormatted = page ? stringToNumber(page) : 1;
+
   try {
     if (cat) {
-      const categoryPosts = await PostModel.find({ category: cat }).populate('user');
+      const categoryFormmated = formattedCategory(cat);
+
+      const categoryPosts = await PostModel.paginate({ category: categoryFormmated }, { sort: { createdAt: -1 }, limit: limitFormatted, page: pageFormatted, populate: 'user' });
+
       return categoryPosts;
     }
-    const allPost = await PostModel.find({}).populate('user');
+
+    const allPost = await PostModel.paginate({}, { sort: { createdAt: -1 }, limit: limitFormatted, page: pageFormatted, populate: 'user' });
 
     return allPost;
   } catch (error) {

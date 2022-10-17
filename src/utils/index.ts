@@ -3,6 +3,8 @@ export * from './createAvatar';
 export * from './createToken';
 export * from './encryptHash';
 export * from './errorHandle';
+export * from './formattedCategory';
+export * from './formattedStringToNumber';
 export * from './formatterToken';
 export * from './removeExtension';
 export * from './resHandle';

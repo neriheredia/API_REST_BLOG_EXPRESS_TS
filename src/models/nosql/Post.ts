@@ -1,4 +1,6 @@
-import { model, Schema } from 'mongoose';
+import { Document, model, PaginateModel, Schema } from 'mongoose';
+import paginate from 'mongoose-paginate-v2';
+import { PostProps } from '../../interfaces';
 
 const PostSchema = new Schema(
   {
@@ -26,6 +28,10 @@ const PostSchema = new Schema(
   { timestamps: true }
 );
 
-const PostModel = model('Post', PostSchema);
+PostSchema.plugin(paginate);
+
+interface PostDocument extends Document, PostProps {};
+
+const PostModel = model<PostDocument, PaginateModel<PostDocument>>('Post', PostSchema, 'posts');
 
 export default PostModel;

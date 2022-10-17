@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import { allUsers, deleteAllUsers, deleteUser, updateUser } from '../../controllers';
 import { tokenValidation } from '../../middleware';
+import { cacheInit } from '../../settings/cache/expeditiousConfig';
 
 const router = Router();
 
-router.get('/', tokenValidation, allUsers);
+router.get('/', tokenValidation, cacheInit, allUsers);
 
 router.get('/admin', tokenValidation, deleteAllUsers);
 

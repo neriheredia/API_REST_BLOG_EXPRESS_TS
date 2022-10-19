@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { loginUser, registerUser } from '../../controllers';
+import { loginUserController, registerUserController } from '../../controllers';
 
 const router = Router();
 
@@ -28,7 +28,7 @@ const router = Router();
  *        password: "123456789"
  */
 
-router.post('/register', registerUser);
+router.post('/register', registerUserController);
 
 /**
  * Login user
@@ -53,6 +53,6 @@ router.post('/register', registerUser);
  *        password: "123456789"
  */
 
-router.post('/login', loginUser);
+router.post('/login', loginUserController);
 
 export { router };

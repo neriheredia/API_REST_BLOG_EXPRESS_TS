@@ -11,7 +11,7 @@ import {
   handleHttpResAuth
 } from '../utils';
 
-const registerUser = async (req: Request, res: Response) => {
+const registerUserController = async (req: Request, res: Response) => {
   const avatarDefault = createAvatarDefault(req.body.firstName, req.body.lastName);
 
   const userData = {
@@ -33,7 +33,7 @@ const registerUser = async (req: Request, res: Response) => {
   };
 };
 
-const loginUser = async (req: Request, res: Response) => {
+const loginUserController = async (req: Request, res: Response) => {
   const query = req.body.email;
   const passwordReq = req.body.password;
 
@@ -56,4 +56,4 @@ const loginUser = async (req: Request, res: Response) => {
   };
 };
 
-export { loginUser, registerUser };
+export { loginUserController, registerUserController };

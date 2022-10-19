@@ -28,6 +28,18 @@ export const allPostsService = async (req: Request) => {
   };
 };
 
+export const onePostService = async (req: Request) => {
+  const { id } = req.params;
+  console.log(id)
+  try {
+    const post = await PostModel.findById({ _id: id }).populate('user');
+
+    return post;
+  } catch (error) {
+    return error;
+  };
+};
+
 export const updatePostService = async (id:string, body: Request) => {
   try {
     const post = await PostModel.findByIdAndUpdate(

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { allCategoriesService, deleteAllCategoryService, deleteCategoryService, newCategoryService, updateCategoryService } from '../services';
 import { handleHttpError, handleHttpRes } from '../utils';
 
-const creteCategory = async (req: Request, res: Response) => {
+const creteCategoryController = async (req: Request, res: Response) => {
   const categoryData = {
     name: req.body.name
   };
@@ -18,7 +18,7 @@ const creteCategory = async (req: Request, res: Response) => {
   };
 };
 
-const allCategories = async (req: Request, res: Response) => {
+const allCategoriesController = async (req: Request, res: Response) => {
   try {
     const categories = await allCategoriesService();
 
@@ -28,7 +28,7 @@ const allCategories = async (req: Request, res: Response) => {
   };
 };
 
-const updateCategory = async (req: Request, res: Response) => {
+const updateCategoryController = async (req: Request, res: Response) => {
   const id = req.params.id;
   const name = req.body.name;
 
@@ -41,7 +41,7 @@ const updateCategory = async (req: Request, res: Response) => {
   };
 };
 
-const deleteCategory = async (req: Request, res: Response) => {
+const deleteCategoryController = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
     const deletedCategory = await deleteCategoryService(id);
@@ -52,7 +52,7 @@ const deleteCategory = async (req: Request, res: Response) => {
   };
 };
 
-const deleteAllCategories = async (req: Request, res: Response) => {
+const deleteAllCategoriesController = async (req: Request, res: Response) => {
   try {
     const response = await deleteAllCategoryService();
 
@@ -62,4 +62,4 @@ const deleteAllCategories = async (req: Request, res: Response) => {
   };
 };
 
-export { allCategories, creteCategory, deleteCategory, deleteAllCategories, updateCategory };
+export { allCategoriesController, creteCategoryController, deleteCategoryController, deleteAllCategoriesController, updateCategoryController };

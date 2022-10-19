@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { allUserService, deleteAllUserService, deleteUserService, updateUserService } from '../services';
 import { handleHttpError, handleHttpRes } from '../utils';
 
-const allUsers = async (req: Request, res: Response) => {
+const allUsersController = async (req: Request, res: Response) => {
   try {
     const users = await allUserService();
 
@@ -12,7 +12,7 @@ const allUsers = async (req: Request, res: Response) => {
   };
 };
 
-const updateUser = async (req: Request, res: Response) => {
+const updateUserController = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   try {
@@ -24,7 +24,7 @@ const updateUser = async (req: Request, res: Response) => {
   };
 };
 
-const deleteUser = async (req: Request, res: Response) => {
+const deleteUserController = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
     const deletedUser = await deleteUserService(id);
@@ -35,7 +35,7 @@ const deleteUser = async (req: Request, res: Response) => {
   };
 };
 
-const deleteAllUsers = async (req: Request, res: Response) => {
+const deleteAllUsersController = async (req: Request, res: Response) => {
   try {
     const response = await deleteAllUserService();
 
@@ -45,4 +45,4 @@ const deleteAllUsers = async (req: Request, res: Response) => {
   };
 };
 
-export { allUsers, deleteAllUsers, deleteUser, updateUser };
+export { allUsersController, deleteAllUsersController, deleteUserController, updateUserController };

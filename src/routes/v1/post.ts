@@ -1,18 +1,20 @@
 import { Router } from 'express';
 import { tokenValidation } from '../../middleware';
-import { allPosts, createPost, deleteAllPosts, deletePost, updatePost } from '../../controllers';
+import { allPostsController, createPostController, deleteAllPostsController, deletePostController, onePostController, updatePostController } from '../../controllers';
 import { cacheInit } from '../../settings/cache/expeditiousConfig';
 
 const router = Router();
 
-router.get('/', cacheInit, allPosts);
+router.get('/', cacheInit, allPostsController);
 
-router.get('/admin', tokenValidation, deleteAllPosts);
+router.get('/:id', cacheInit, onePostController);
 
-router.post('/', tokenValidation, createPost);
+router.get('/admin', tokenValidation, deleteAllPostsController);
 
-router.put('/:id', tokenValidation, updatePost);
+router.post('/', tokenValidation, createPostController);
 
-router.delete('/:id', tokenValidation, deletePost);
+router.put('/:id', tokenValidation, updatePostController);
+
+router.delete('/:id', tokenValidation, deletePostController);
 
 export { router };

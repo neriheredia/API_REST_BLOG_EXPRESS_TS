@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { allPostsService, deleteAllPostService, deletePostService, newPostService, updatePostService } from '../services';
+import { allPostsService, deleteAllPostService, deletePostService, newPostService, onePostService, updatePostService } from '../services';
 import { handleHttpError, handleHttpRes } from '../utils';
 
-const createPost = async (req: Request, res: Response) => {
+const createPostController = async (req: Request, res: Response) => {
   const postData = {
     category: req.body.category,
     description: req.body.description,
@@ -22,7 +22,7 @@ const createPost = async (req: Request, res: Response) => {
   };
 };
 
-const allPosts = async (req: Request, res: Response) => {
+const allPostsController = async (req: Request, res: Response) => {
   try {
     const posts = await allPostsService(req);
 
@@ -32,7 +32,17 @@ const allPosts = async (req: Request, res: Response) => {
   };
 };
 
-const updatePost = async (req: Request, res: Response) => {
+const onePostController = async (req: Request, res: Response) => {
+  try {
+    const post = await onePostService(req);
+
+    handleHttpRes(res, 200, 'Successful call', post);
+  } catch (error) {
+    handleHttpError(res, 500, 'Error, the call failed.');
+  };
+};
+
+const updatePostController = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   try {
@@ -44,7 +54,7 @@ const updatePost = async (req: Request, res: Response) => {
   };
 };
 
-const deletePost = async (req: Request, res: Response) => {
+const deletePostController = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
     const deletedPost = await deletePostService(id);
@@ -55,7 +65,7 @@ const deletePost = async (req: Request, res: Response) => {
   };
 };
 
-const deleteAllPosts = async (req: Request, res: Response) => {
+const deleteAllPostsController = async (req: Request, res: Response) => {
   try {
     const response = await deleteAllPostService();
 
@@ -65,4 +75,4 @@ const deleteAllPosts = async (req: Request, res: Response) => {
   };
 };
 
-export { allPosts, createPost, deleteAllPosts, deletePost, updatePost };
+export { allPostsController, createPostController, deleteAllPostsController, deletePostController, onePostController, updatePostController };

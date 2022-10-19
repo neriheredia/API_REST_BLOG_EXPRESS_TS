@@ -30,7 +30,7 @@ export const allPostsService = async (req: Request) => {
 
 export const onePostService = async (req: Request) => {
   const { id } = req.params;
-  console.log(id)
+
   try {
     const post = await PostModel.findById({ _id: id }).populate('user');
 

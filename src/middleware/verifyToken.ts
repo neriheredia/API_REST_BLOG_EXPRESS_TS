@@ -4,7 +4,7 @@ import { PayloadJWT } from '../interfaces';
 import { formatterToken, handleHttpErrorRandom } from '../utils';
 
 export const tokenValidation = (req: Request, res: Response, next: NextFunction) => {
-  const token: string | undefined = req.header('authorization');
+  const token: string | undefined = req.header('Authorization');
   if (!token) return handleHttpErrorRandom(res, 'Access denied');
   try {
     const formatter = formatterToken(token);

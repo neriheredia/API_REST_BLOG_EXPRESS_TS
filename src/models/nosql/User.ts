@@ -31,7 +31,8 @@ const UserSchema = new Schema(
       maxLength: 100
     },
     profilePic: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   { timestamps: true }

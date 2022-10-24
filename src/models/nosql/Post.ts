@@ -16,6 +16,10 @@ const PostSchema = new Schema(
       type: String,
       required: false
     },
+    photoPublicId: {
+      type: String,
+      required: false
+    },
     title: {
       type: String,
       required: true

@@ -4,25 +4,25 @@ const seedCategories = async () => {
   await CategoryModel.deleteMany();
   await CategoryModel.create(
     {
-      name: 'noticias'
+      name: 'news'
     },
     {
-      name: 'musica'
+      name: 'music'
     },
     {
-      name: 'deportes'
+      name: 'sports'
     },
     {
-      name: 'informatica'
+      name: 'computing'
     },
     {
-      name: 'laboral'
+      name: 'labor'
     },
     {
       name: 'marketing'
     },
     {
-      name: 'historias'
+      name: 'stories'
     }
   );
 };

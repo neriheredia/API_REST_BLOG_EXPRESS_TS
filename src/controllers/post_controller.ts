@@ -7,6 +7,7 @@ const createPostController = async (req: Request, res: Response) => {
     category: req.body.category,
     description: req.body.description,
     photo: req.body.photo,
+    photoPublicId: req.body.photoPublicId,
     title: req.body.title,
     user: req.body.user
   };

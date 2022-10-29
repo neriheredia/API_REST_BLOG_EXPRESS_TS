@@ -47,9 +47,9 @@ const updatePostController = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   try {
-    const newPost = await updatePostService(id, req.body);
+    const updatePost = await updatePostService(id, req);
 
-    handleHttpRes(res, 200, 'Successful call', newPost);
+    handleHttpRes(res, 200, 'Successful, post update', updatePost);
   } catch (error) {
     handleHttpError(res, 500, 'Error, the call failed.');
   };

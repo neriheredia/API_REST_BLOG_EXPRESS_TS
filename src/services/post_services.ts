@@ -15,12 +15,12 @@ export const allPostsService = async (req: Request) => {
     if (cat) {
       const categoryFormmated = formattedCategory(cat);
 
-      const categoryPosts = await PostModel.paginate({ category: categoryFormmated }, { sort: { createdAt: -1 }, limit: limitFormatted, page: pageFormatted, populate: 'user' });
+      const categoryPosts = await PostModel.paginate({ category: categoryFormmated }, { sort: { createdAt: 1 }, limit: limitFormatted, page: pageFormatted, populate: 'user' });
 
       return categoryPosts;
     }
 
-    const allPost = await PostModel.paginate({}, { sort: { createdAt: -1 }, limit: limitFormatted, page: pageFormatted, populate: 'user' });
+    const allPost = await PostModel.paginate({}, { sort: { createdAt: 1 }, limit: limitFormatted, page: pageFormatted, populate: 'user' });
 
     return allPost;
   } catch (error) {
@@ -40,12 +40,12 @@ export const onePostService = async (req: Request) => {
   };
 };
 
-export const updatePostService = async (id:string, body: Request) => {
+export const updatePostService = async (id:string, req: Request) => {
   try {
     const post = await PostModel.findByIdAndUpdate(
-      { _id: id },
+      id,
       {
-        $set: body
+        $set: req.body
       },
       { new: true }
     );

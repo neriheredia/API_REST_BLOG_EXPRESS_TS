@@ -9,7 +9,7 @@ const engine = <string>process.env.DB_ENGINE;
 const seed = <string>process.env.SEED_DB;
 
 app.listen(port, () => {
-  console.log(`Server is listening on port ${port}!`);
+  // console.log(`Server is listening on port ${port}!`);
   swaggerDocs(app, port, 'v1');
 });
 

@@ -1,9 +1,27 @@
 import PostModel from '../models/nosql/Post';
-import { PostProps } from '../interfaces';
 import { Request } from 'express';
 import { formattedCategory, stringToNumber } from '../utils';
 
-export const newPostService = (post: PostProps) => new PostModel(post);
+export const newPostService = async (req: Request) => {
+  const postData = {
+    category: req.body.category,
+    description: req.body.description,
+    photo: req.body.photo,
+    photoPublicId: req.body.photoPublicId,
+    title: req.body.title,
+    user: req.body.user
+  };
+
+  try {
+    const newPost = new PostModel(postData);
+
+    const savedPost = await newPost.save();
+
+    return savedPost;
+  } catch (error) {
+    return error;
+  }
+}
 
 export const allPostsService = async (req: Request) => {
   const { cat, limit, page } = req.query;
@@ -15,12 +33,12 @@ export const allPostsService = async (req: Request) => {
     if (cat) {
       const categoryFormmated = formattedCategory(cat);
 
-      const categoryPosts = await PostModel.paginate({ category: categoryFormmated }, { sort: { createdAt: 1 }, limit: limitFormatted, page: pageFormatted, populate: 'user' });
+      const categoryPosts = await PostModel.paginate({ category: categoryFormmated }, { sort: { createdAt: -1 }, limit: limitFormatted, page: pageFormatted, populate: 'user' });
 
       return categoryPosts;
     }
 
-    const allPost = await PostModel.paginate({}, { sort: { createdAt: 1 }, limit: limitFormatted, page: pageFormatted, populate: 'user' });
+    const allPost = await PostModel.paginate({}, { sort: { createdAt: -1 }, limit: limitFormatted, page: pageFormatted, populate: 'user' });
 
     return allPost;
   } catch (error) {

@@ -1,8 +1,6 @@
 import { v2 } from '../settings/cloudinary/cloudinaryConfig';
 
 export const uploadImage = async (req: any) => {
-  console.log(req.file);
-  console.log(req.file.path);
   try {
     const result = await v2.uploader.upload(req.file?.path);
 

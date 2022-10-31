@@ -3,21 +3,10 @@ import { allPostsService, deleteAllPostService, deletePostService, newPostServic
 import { handleHttpError, handleHttpRes } from '../utils';
 
 const createPostController = async (req: Request, res: Response) => {
-  const postData = {
-    category: req.body.category,
-    description: req.body.description,
-    photo: req.body.photo,
-    photoPublicId: req.body.photoPublicId,
-    title: req.body.title,
-    user: req.body.user
-  };
-
   try {
-    const newPost = newPostService(postData);
+    const newPost = await newPostService(req);
 
-    const savedPost = await newPost.save();
-
-    handleHttpRes(res, 201, 'Post created', savedPost);
+    handleHttpRes(res, 201, 'Post created', newPost);
   } catch (error) {
     handleHttpError(res, 500, 'Error, the post was not created.');
   };

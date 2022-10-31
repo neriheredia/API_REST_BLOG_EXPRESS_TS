@@ -5,7 +5,6 @@
   "main": "./server.ts",
   "type": "commonjs",
   "scripts": {
-    "build": "tsc && node build/index.js",
     "start": "tsc && node build/index.js",
     "dev": "pnpm run build && nodemon",
     "test": "jest --coverage --silent",
